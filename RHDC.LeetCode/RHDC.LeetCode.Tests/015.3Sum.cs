@@ -11,6 +11,26 @@ namespace RHDC.LeetCode.Tests
         // that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
         // Notice that the solution set must not contain duplicate triplets.
 
+        // nums[i] + nums[j]  == -1 * nums[k]
+
+        // Constraints:
+        // 3 <= nums.length <= 3000
+        // -10^5 <= nums[i] <= 10^5
+
+
+        // ## Option #1 
+        // Order The Array
+        // Iterate Through Every Combination of [0] + [1] = -1*[3], except where i != j, i != k, and j != k
+        // if [3] is < [0], Search Left, From [0]
+        // else if [3] is > [0] && [3] < [1], Search Middle [0] & [1]
+        // else if [3] > [1], Search Right, From [1]
+
+        // Search Left = check for solution until beginning of array || or the value becomes out of range of [3]
+        // Search Middle = check for solution until you hit [1]
+        // Search Right = check for solution until end of array || or the value becomes out of range of [3]
+
+        // Handle Soluton = order by and try addToDictionary()
+
         private IEnumerable<int[]> FindThreeSums(int[] numbers)
         {
             var answers = new List<int[]>();
@@ -23,7 +43,7 @@ namespace RHDC.LeetCode.Tests
                 for (int ii = 0; ii < sortedNumbers.Count(); ii++)
                 {
                     // skip when the second number is the same af the first
-                    if (i == ii )
+                    if (i == ii)
                     {
                         continue;
                     }
@@ -33,15 +53,12 @@ namespace RHDC.LeetCode.Tests
                         var targetNumber = number1 + number2 * -1;
                         // another loop
                         // move left or right based on value of number2
-                        // if targetNumber > 
-
+                        // if targetNumber >
                     }
                 }
 
                 var otherNumbers = new int[] { };
                 // find any two other numbers which equal the target value
-
-
             }
 
             return answers;
